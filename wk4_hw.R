@@ -8,7 +8,7 @@ library(countrycode)
 library(usethis)
 
 # read in world_outline shape file
-world_outline <- st_read(here("World_Countries_Generalized.shp")) %>% 
+world_outline <- st_read(here("world_countries_generalized", "World_Countries_Generalized.shp")) %>% 
   st_transform(4326) %>% 
   clean_names()
 
@@ -68,7 +68,7 @@ world_gii_indices_diff <- world_gii_indices_clean %>%
 View(world_gii_indices_diff)
 
 tm_shape(world_outline) +
-  tm_polygons(alpha = 0)
+  tm_polygons(alpha = 0) +
 tm_shape(world_gii_indices_diff) +
   tm_polygons("gii_improvement_2010_2019",
               style="jenks",
